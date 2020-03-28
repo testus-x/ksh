@@ -11,9 +11,7 @@ git clone git@github.com:*your_account*/ksh.git
 ## Issue, branch, comit and create a PR
 Before you start working on an problem or feature, please check the [ksh Issue](https://github.com/ksh-community/ksh/issues) web page, whether there is not already work in progress (WIP) to avoid wasting your valueable time. If there is someone already working on it, please check, whether it is possible to work together on it. If you can't find an Issue for your problem/feature, please [create a new Issue](https://github.com/ksh-community/ksh/issues/new) and refer to it using hash + number (e.g. #123) when you refer to it on github. Within the issue web page you may ask for further guidance or get some hints from other collaborators.
 
-Before you actually start changing any code, you should always make sure, that your master is up-to-date (see below **1. Sync with upstream**) 
-
-
+Before you actually start changing any code, you should always make sure, that your master is up-to-date (see below [**Sync with upstream**](#user-content-1-sync-with-upstream) for CLI commands).
 
 ## Code [review](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-reviews)
 Before a PR is allowed to be merged into a protected branch, at least two collaborators must approve it (green). Furthermore, if Continuous Integration (CI) has been set up, all tests need to pass (green or yellow) unless there are very good/strong reasons, which should allow merging w/o CI passing.
