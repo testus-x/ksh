@@ -101,15 +101,16 @@ rm /tmp/prXY
 ```
 Note: `5` in the example above is the github assigned [ID](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/checking-out-pull-requests-locally#modifying-an-inactive-pull-request-locally) of the PR. To find the right ID just open the related PR page via the [Pull requests](https://github.com/ksh-community/ksh/pulls) tab on github (or use its `${URL}`**.patch** directly). If the PR consists of more than a single commit, the patch file contains several e-mails - one for each commit.
 
-Before applying the patch, you may adjusting it, by editing the file of course (e.g. Author/e-mail in the `From:` headers).
-
-Now you can modify all commits as needed. The following **rule of thumb** should be obeyed:
+Now you can modify all commits as needed. The following **rules of thumb** should be obeyed:
   * Commit messages: title
-    * max. 72 chars (if too long, try to shorten it, add a <LF> and use the longer description as "body" of the commit)
+    * max. 72 chars. If too long, try to shorten it, add a <LF> and use the longer description as "body" of the commit.
     * should contain a reference to the issue ID, e.g. see #123
     * to auto-close prefix with 'fix #123' or append '(fixes #123)'
-  * Commit body
-    * if the title contains no reference to the issue ID, add the following tag to the body: `  See: #123` - replace 123 with the issue ID. You may add more using a single whitespace as separator.
+  * Commit message: body
+    * the commit message body gets separated from the commit message title by a single empty line.
+    * if the message title contains no reference to the issue ID, add the following tag to the body of all commits: `  See: #123` - replace 123 with the issue ID. You may add more using a single whitespace as separator.
+    * max. line length: 80 chars
+    * if more than one authors should be should named, add the following line for each of them to the end of the message body: `Co-authored-by: Given Name <email>` - the email should be the one, which cwthe author used to registred with github. 
 
 TBD: reword + include issue NR, rebase
 ```
