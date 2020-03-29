@@ -66,7 +66,7 @@ GitHub's green merge button on the WebUI should not be used to merge PRs because
 
 Therefore we **use our own local repository** to merge and push.
 
-To be able to pull branches from other repos, one should add them on demand, but at least `upstream`, e.g. using:
+To be able to pull branches from other repos easily, one should add them on demand, but at least `upstream`, e.g. using:
 ```
 git remote add upstream git@github.com:ksh-community/ksh.git
 git remote add jghub git@github.com:*collaborator*/ksh.git
@@ -87,7 +87,7 @@ git push master
 If the checkout above does not work because of pending changes, just stash them away using `git stash` and when done with merging, get them back using `git stash pop`.
 
 ###	2. Create a new local branch, merge in the PR, adjust commits 
-First, one should create a local branch, where the PR changes get merged in. Actually one may merge the changes directly into the master, however, usually one wanna **review** and **test** the changes, what sometimes takes a little bit longer or need to be postponed for this or that reason and thus would block any progress on the master or on your own branches. Furthermore a separate branch gives much more flexibility, allows one to cherry pick, reword, edit, squash, join and drop commits, i.e. fine grained adjustments before the PR gets merged into the related upstream branch.
+First, one should create a local branch, where the PR changes get merged in. Actually one may merge the changes directly into the master, however, usually one wanna **review** and **test** the changes, what sometimes takes a little bit longer or need to be postponed for this or that reason and thus would block any progress on the master or on your own branches. So one may cherry pick, reword, edit, squash, join and drop commits, make other fine grained adjustments before the PR gets merged into the related upstream branch and if anything goes really wrong, one always has the option to simply drop the branch/changes made so far and start over again.
 ```
 git checkout master
 git checkout -b fixXY
