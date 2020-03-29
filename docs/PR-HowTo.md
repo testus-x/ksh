@@ -91,15 +91,16 @@ First, one should create a local branch, where the PR changes get merged in. Act
 ```
 git checkout -b fixXY
 ```
-If we know, that the PR got created by comparing the master with e.g. `jghub`'s `fix1` branch in theory one could use `git pull jghub fix1` to merge it in. However, to make sure, that really matches the "content" of the PR submitted to github, we download the PR formatted as an e-mail and apply it to the local branch. :
+If we know, that the PR got created by comparing the master with e.g. `jghub`'s `fix1` branch in theory one could use `git pull jghub fix1` to merge it in. However, to make sure, that we really use the "content" of the PR submitted to github, we download the PR as an e-mail formatted patch and apply it to the local branch:
 ```
 wget -O /tmp/prXY https://github.com/ksh-community/ksh/pull/5.patch
-# you may edit e.g. Author/e-mail in the `From:` header etc, and finally merge
 git checkout fixXY
 git am /tmp/prXY
+rm /tmp/prXY
 ```
-Note: `5` is the github assigned ID of the PR. To find the right ID just open the related PR page via the [Pull requests](https://github.com/ksh-community/ksh/pulls) tab on github (or use its `${URL}`**.patch** directly). 
+Note: `5` is the github assigned ID of the PR. To find the right ID just open the related PR page via the [Pull requests](https://github.com/ksh-community/ksh/pulls) tab on github (or use its `${URL}`**.patch** directly). If the PR consists of more than a single commit, tha patch file contains several e-mails - one for each commit.
 
+Before applying the patch, you may adjusting it, by editing the file of course (e.g. Author/e-mail in the `From:` headers).
 
 Now you can modify all commits as needed. 
 
