@@ -84,14 +84,15 @@ git push master
 If the checkout above does not work because of pending changes, just stash them away using `git stash` and when done with merging, get them back using `git stash pop`.
 
 ###	2. Create a new local branch and merge in the PR
-First, one should create a local branch, where the PR change get merged in. Actually one may merge the changes directly into the master, however, usually one wanna **review** and **test** the changes, what sometimes takes a little bit longer or need to be postponed for this or that reason and thus would block any progress on the master or on your own branches. Furthermore a separate branch gives much more flexibility, allows one to cherry pick, reword, edit, squash, join and drop commits, i.e. fine grained adjusments before the PR gets merged into the related upstream branch. So creating a new local branch makes and pulling in all commits from :
+First, one should create a local branch, where the PR changes get merged in. Actually one may merge the changes directly into the master, however, usually one wanna **review** and **test** the changes, what sometimes takes a little bit longer or need to be postponed for this or that reason and thus would block any progress on the master or on your own branches. Furthermore a separate branch gives much more flexibility, allows one to cherry pick, reword, edit, squash, join and drop commits, i.e. fine grained adjustments before the PR gets merged into the related upstream branch. So creating a new local branch makes and pulling in all commits from `jghub`'s `fix1` branch:
 ```
 git checkout -b fixXY
 git pull jghub fix1
 ```
-Now you can modify all commits as needed (and remove all changes being made so for using `git clean -f -d`). 
+Now you can modify all commits as needed.
 
 TBD: reword + include issue NR, rebase
+```
 # p, pick = use commit
 # r, reword = use commit, but edit the commit message
 # e, edit = use commit, but stop for amending
@@ -99,7 +100,7 @@ TBD: reword + include issue NR, rebase
 # f, fixup = like "squash", but discard this commit's log message
 # x, exec = run command (the rest of the line) using shell
 # d, drop = remove commit
-
+```
 
 ###	3. Merge into the master and push to upstream and origin
 ```
