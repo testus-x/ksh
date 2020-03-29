@@ -98,7 +98,7 @@ git pull jghub fix1
 ```
 Here we can use `jghub` because we have added a remote repository and assigned this name to it. One would probably choose this option, when it is known, that the PR still needs some work and you have commit access to the related repository/branch. Each time the fix1 branch receives a new commit via push, it gets automatically propagated to the related PR by github.
 
-Another option to pull in the PR is to download the PR as an mbox formatted file. It contains every commit in a separate e-mail with the commit formatted as a git patch. Once we have it, we apply it to the local branch. E.g.:
+Another option to pull in the PR is to download the PR as an mbox formatted file. It contains every commit in a separate e-mail with the commit formatted as a git patch. First we download it, than create a new branch based on the head of the master, apply it and remove the downloaded mbox file. E.g.:
 ```
 # Option #2
 wget -O /tmp/prXY https://github.com/ksh-community/ksh/pull/123.patch
@@ -107,7 +107,7 @@ git checkout -b fixXY
 git am /tmp/prXY
 rm /tmp/prXY
 ```
-Wrt. wget you may just copy and paste the URL of the PR page and append `.patch` to it (`${URL}`**.patch**). The advantage here is, that one may change the Author and e-mail address by just editing the `From:` values in the mbox file (mbox == plain text). Furthermore one may use an e-mail client to browse all commits and determine the number of commits in the PR very easy (e.g. `mutt -f /tmp/prXY` or `grep ^Subject /tmp/prXY`). Because the commits get re-created, they will have a different hash, than in the original branch and PR.
+Wrt. wget you may simply copy and paste the URL of the PR page and append `.patch` to it (`${URL}`**.patch**). The advantage here is, that one may change the Author and e-mail address by just editing the `From:` values in the mbox file (mbox == plain text). Furthermore one may use an e-mail client to browse all commits and determine the number of commits in the PR very easy (e.g. `mutt -f /tmp/prXY` or `grep ^Subject /tmp/prXY`). Because the commits get re-created, they will have a different hash, than in the original branch and PR.
 
 Last but not least there is a 3rd option: pulling the PR directly into a new branch. E.g.:
 ```
@@ -134,8 +134,8 @@ In the new local branch, which contains the PR, one should now modify all commit
   * Code units, commits, patches: One should be able to read and understand them pretty easy, quickly. So:
     * keep them as compact as possible
     * inline documentation where it makes sense
-    * use the issue page on github to discuss and track ideas, enhancements, tasks, bugs, brainstorming (the **what**). Document the results as compact as possible in the code or commit message.
-	* Code related details (the **how**) should be discussed on the related PR page.
+  * use the **issue page** on github to discuss and track ideas, enhancements, tasks, bugs, brainstorming (the **what**). Document the results as compact as possible in the code or commit message.
+  * use the **PR page** on github to discuss/annotate code related details (the **how**)
 
 TBD: reword + include issue NR, rebase
 ```
