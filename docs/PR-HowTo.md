@@ -84,7 +84,7 @@ git push master
 If the checkout above does not work because of pending changes, just stash them away using `git stash` and when done with merging, get them back using `git stash pop`.
 
 ###	2. Create a new local branch and merge in the PR
-A gatekeeper may omit this step and merge the changes directly into the master, however, usually you wanna **review** and **test** the changes, what sometimes takes a little bit longer or need to be postponed for this or that reason. So creating a new local branch makes provides much more flexibility:
+First, one should create a local branch, where the PR change get merged in. Actually one may merge the changes directly into the master, however, usually one wanna **review** and **test** the changes, what sometimes takes a little bit longer or need to be postponed for this or that reason and thus would block any progress on the master or on your own branches. Furthermore a separate branch allows one to So creating a new local branch makes provides much more flexibility:
 ```
 git checkout -b fixXY
 git pull jghub fix1
