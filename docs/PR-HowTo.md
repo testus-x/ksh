@@ -92,7 +92,7 @@ First, one should create a local branch, where the PR changes get merged in. Act
 git checkout master
 git checkout -b fixXY
 ```
-To find out, what to merge into the new branch, one can go on the issue page (e.g. `https://github.com/ksh-community/ksh/pull/123`) - use the [Issues tab](https://github.com/ksh-community/ksh/pulls) to find it - and click on the [command line instructions]() link right beside the green `Squash and merge` button. The pattern to use is basically `git pull git://github.com/*collaborator*/ksh.git *branch*`. So `git pull jghub fix1` would be ok - we can use `jghub` because we have added a remote repository and assigned this name to it.
+To find out, what to merge into the new branch, one can go to the [ksh repository](https://github.com/ksh-community/ksh) page, click on the [Pull requests](https://github.com/ksh-community/ksh/pulls) tab, and select the desired PR - you will end up with an URL like `https://github.com/ksh-community/ksh/pull/123`. On the PR page click on the [command line instructions]() link right beside the green `Squash and merge` button. The pattern to use is basically `git pull git://github.com/*collaborator*/ksh.git *branch*`. So `git pull jghub fix1` would be ok - we can use `jghub` because we have added a remote repository and assigned this name to it.
 
 Another, IMHO easier to automat option to pull in the changes is to download the PR as an mbox formatted file. It contains every commit in a separate e-mail with the commit formatted as a git patch. Once we have it, we apply it to the local branch:
 ```
