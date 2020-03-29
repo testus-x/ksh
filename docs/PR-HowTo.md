@@ -98,7 +98,7 @@ git checkout fixXY
 git am /tmp/prXY
 rm /tmp/prXY
 ```
-Note: `5` is the github assigned ID of the PR. To find the right ID just open the related PR page via the [Pull requests](https://github.com/ksh-community/ksh/pulls) tab on github (or use its `${URL}`**.patch** directly). If the PR consists of more than a single commit, tha patch file contains several e-mails - one for each commit.
+Note: `5` in the example above is the github assigned [ID](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/checking-out-pull-requests-locally#modifying-an-inactive-pull-request-locally) of the PR. To find the right ID just open the related PR page via the [Pull requests](https://github.com/ksh-community/ksh/pulls) tab on github (or use its `${URL}`**.patch** directly). If the PR consists of more than a single commit, the patch file contains several e-mails - one for each commit.
 
 Before applying the patch, you may adjusting it, by editing the file of course (e.g. Author/e-mail in the `From:` headers).
 
