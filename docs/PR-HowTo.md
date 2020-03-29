@@ -82,7 +82,7 @@ git rebase --abort
 git checkout master
 git fetch upstream
 git merge --ff-only upstream/master
-git push master
+git push origin master
 ```
 If the checkout above does not work because of pending changes, just stash them away using `git stash` and when done with merging, get them back using `git stash pop`.
 
@@ -107,7 +107,7 @@ git checkout -b fixXY
 git am /tmp/prXY
 rm /tmp/prXY
 ```
-Wrt. wget you may just copy and paste the URL of the PR page and append `.patch` to it (`${URL}`**.patch**). The advantage here is, that you may change the Author and e-mail address by just editing the `From:` values in the mbox file. Furthermore you may use an e-mail client to browse all commits and determine the number of commits in the PR very easy (e.g. `mutt -f /tmp/prXY` or `grep ^Subject /tmp/prXY`).
+Wrt. wget you may just copy and paste the URL of the PR page and append `.patch` to it (`${URL}`**.patch**). The advantage here is, that one may change the Author and e-mail address by just editing the `From:` values in the mbox file (mbox == plain text). Furthermore one may use an e-mail client to browse all commits and determine the number of commits in the PR very easy (e.g. `mutt -f /tmp/prXY` or `grep ^Subject /tmp/prXY`). Because the commits get re-created, they will have a different hash, than in the original branch and PR.
 
 Last but not least there is a 3rd option: pulling the PR directly into a new branch. E.g.:
 ```
@@ -116,8 +116,9 @@ git checkout master
 git fetch upstream pull/123/head:fixXY
 git checkout fixXY
 ```
+That's probably the most convinient option and keeps commit hashes as is.
 
-Now you can modify all commits as needed. The following **rules of thumb** should be obeyed:
+In the new local branch, one can now modify all commits as needed. The following **rules of thumb** should be obeyed:
   * Commit messages: title
     * max. 72 chars. If too long, try to shorten it, add a <LF> and use the longer description as "body" of the commit.
     * should contain a reference to the issue ID, e.g. see #321
