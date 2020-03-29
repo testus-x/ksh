@@ -111,7 +111,12 @@ Now you can modify all commits as needed. The following **rules of thumb** shoul
     * if the message title contains no reference to the issue ID, add the following tag to the body of all commits: `  See: #123` - replace 123 with the issue ID. You may add more using a single whitespace as separator.
     * max. line length: 80 chars
     * if more than one author should be named, add the following line for each of them to the end of the message body: `Co-authored-by: Given Name <email>` - the email should be the one, which the author used to registred with github. 
-    * important know how refs should be part of the commit message unless they are already inlined in the code. If github issue pages are not available, one should still be able to get the know how to understand the patch.
+    * important know how refs should be part of the commit message unless they are already inlined in the code. If github issue pages are not available, one should still be able to get the know how to understand the patch pretty easy.
+  * Code units, commits, patches: One should be able to read and understand them pretty easy, quickly. So:
+    * keep them as compact as possible
+    * inline documentation where it makes sense
+    * use the issue page on github to discuss and track ideas, enhancements, tasks, bugs, brainstorming (the **what**). Document the results as compact as possible in the code or commit message.
+	* Code related details (the **how**) should be discussed on the related PR page.
 
 TBD: reword + include issue NR, rebase
 ```
