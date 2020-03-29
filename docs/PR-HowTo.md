@@ -47,12 +47,12 @@ git branch -d fix_problem
 
 
 ## Code [review](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-reviews) (collaborators)
-Before a PR is allowed to be merged into a protected branch, at least two collaborators must approve it (WebUI button becomes green). Furthermore, if Continuous Integration (CI) has been set up, all tests need to pass (green or yellow) unless there are very good/strong reasons, which should allow merging w/o CI passing.
+Before a PR is allowed to be merged into a protected branch, at least two collaborators must approve it (when done, the WebUI button becomes green). Furthermore, if Continuous Integration (CI) has been set up, all tests need to pass (green or yellow) unless there are very good/strong reasons, which should allow merging w/o CI passing.
 
 All fixes should have a test case which demonstrates the defect. The test should fail before the change, and pass after the change. If it is too hard or too complex to create a test, at least the corresponding issue should have a clear description, how to re-produce the problem. The code should be documented inline as well unless it doesn't make sense or is more or less bloat.
 
-## Merge PR to upstream (gatekeepers, only)
-Only gatekeepers are able to merge PRs to protected upstream branches (e.g. `master`, `release`, `beta`, `fcs'). But
+## Merge PR to upstream (gatekeepers)
+Only gatekeepers are able to merge PRs to protected upstream branches (e.g. `master`, `release`, `beta`, `fcs`). But
 
 **NOTE**: Please do **not** use github's WebUI to merge PRs!
 
