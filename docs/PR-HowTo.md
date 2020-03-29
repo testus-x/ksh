@@ -50,7 +50,7 @@ git branch -d fix_problem
 
 
 ## Code [review](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-reviews) (collaborators)
-Before a PR is allowed to be merged into a protected branch, at least two collaborators must approve it (when done, the WebUI button becomes green). Furthermore, if Continuous Integration (CI) has been set up, all tests need to pass (green or yellow) unless there are very good/strong reasons, which should allow merging w/o CI passing.
+Before a PR is allowed to be merged into a protected branch, at least two collaborators must [review](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/reviewing-proposed-changes-in-a-pull-request) and [approve](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/approving-a-pull-request-with-required-reviews) it (when done, the WebUI button becomes green). Furthermore, if Continuous Integration (CI) has been set up, all tests need to pass (green or yellow) unless there are very good/strong reasons, which should allow merging w/o CI passing.
 
 All fixes should have a test case which demonstrates the defect. The test should fail before the change, and pass after the change. If it is too hard or too complex to create a test, at least the corresponding issue should have a clear description, how to re-produce the problem. The code should be documented inline as well unless it doesn't make sense or is more or less bloat.
 
@@ -92,7 +92,7 @@ First, one should create a local branch, where the PR changes get merged in. Act
 git checkout master
 git checkout -b fixXY
 ```
-To find out, what to merge into the new branch, one can go on the issue page (e.g. `https://github.com/ksh-community/ksh/pull/123`) - use the [Issues tab](https://github.com/ksh-community/ksh/pulls) to find it - and click on the [command line instructions]() link right beside the green `Squash and merge` button.
+To find out, what to merge into the new branch, one can go on the issue page (e.g. `https://github.com/ksh-community/ksh/pull/123`) - use the [Issues tab](https://github.com/ksh-community/ksh/pulls) to find it - and click on the [command line instructions]() link right beside the green `Squash and merge` button. The pattern to use is basically `git pull git://github.com/*collaborator*/ksh.git *branch*`. So `git pull jghub fix1` would be ok - we can use `jghub` because we have added a remote repository and assigned this name to it.
 
  we know, that the PR got created by comparing the master with e.g. `jghub`'s `fix1` branch in theory one could use `git pull jghub fix1` to merge it in. However, it is  little bit annoying to have to find out from where to pull in the changes (, we download the PR as an mbox formatted file. It contains every commit in a separate e-mail with the commit formatted as a git patch. Once we have it, we apply it to the local branch:
 ```
