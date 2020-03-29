@@ -103,7 +103,7 @@ Note: `5` in the example above is the github assigned [ID](https://help.github.c
 
 Before applying the patch, you may adjusting it, by editing the file of course (e.g. Author/e-mail in the `From:` headers).
 
-Now you can modify all commits as needed. The following rule of thumb should be obeyed:
+Now you can modify all commits as needed. The following **rule of thumb** should be obeyed:
   * Commit messages: title
     * max. 72 chars (if too long, try to shorten it, add a <LF> and use the longer description as "body" of the commit)
     * should contain a reference to the issue ID, e.g. see #123
