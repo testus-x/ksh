@@ -37,7 +37,10 @@ Once you are at the point you think you are in sync with the upstream master and
 git checkout fix_problem
 git push --set-upstream origin fix_problem
 ```
-The `--set-upstream` is optional - it tells git, where a push per default gets sent to and from where to pull data per default.
+The `--set-upstream` is optional - it tells git, where a push per default gets sent to and from where to pull data per default. When you rebase often or somehow change the history of your branch (e.g. via `git rebase ...`) forcing a push to your origin is OK, because usually only very few people have it checked out/working on it and you are able to/should give them a hint via the related issue page on github. So to force a push, you may use:
+```
+git push --force-with-lease origin fix_problem
+```
 
 Now you can use the [**New pull request**](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork) button in the WebUI of your **origin** to create new Pull request. This will notify PR reviewers, which will have a look at it, may ask for changes or explainations and finally the PR gets merged to the related upstream branch. After this you may do some local housekeeping and delete the merged branch, e.g. using
 ```
@@ -83,13 +86,22 @@ git push master
 ```
 If the checkout above does not work because of pending changes, just stash them away using `git stash` and when done with merging, get them back using `git stash pop`.
 
-###	2. Create a new local branch and merge in the PR
-First, one should create a local branch, where the PR changes get merged in. Actually one may merge the changes directly into the master, however, usually one wanna **review** and **test** the changes, what sometimes takes a little bit longer or need to be postponed for this or that reason and thus would block any progress on the master or on your own branches. Furthermore a separate branch gives much more flexibility, allows one to cherry pick, reword, edit, squash, join and drop commits, i.e. fine grained adjustments before the PR gets merged into the related upstream branch. So creating a new local branch makes and pulling in all commits from `jghub`'s `fix1` branch:
+###	2. Create a new local branch, merge in the PR, adjust commits 
+First, one should create a local branch, where the PR changes get merged in. Actually one may merge the changes directly into the master, however, usually one wanna **review** and **test** the changes, what sometimes takes a little bit longer or need to be postponed for this or that reason and thus would block any progress on the master or on your own branches. Furthermore a separate branch gives much more flexibility, allows one to cherry pick, reword, edit, squash, join and drop commits, i.e. fine grained adjustments before the PR gets merged into the related upstream branch.
 ```
 git checkout -b fixXY
-git pull jghub fix1
 ```
-Now you can modify all commits as needed.
+If we know, that the PR got created by comparing the master with e.g. `jghub`'s `fix1` branch in theory one could use `git pull jghub fix1` to merge it in. However, to make sure, that really matches the "content" of the PR submitted to github, we download the PR formatted as an e-mail and apply it to the local branch. :
+```
+wget -O /tmp/prXY https://github.com/ksh-community/ksh/pull/5.patch
+# you may edit e.g. Author/e-mail in the `From:` header etc, and finally merge
+git checkout fixXY
+git am /tmp/prXY
+```
+Note: `5` is the github assigned ID of the PR. To find the right ID just open the related PR page via the [Pull requests](https://github.com/ksh-community/ksh/pulls) tab on github (or use its `${URL}`**.patch** directly). 
+
+
+Now you can modify all commits as needed. 
 
 TBD: reword + include issue NR, rebase
 ```
