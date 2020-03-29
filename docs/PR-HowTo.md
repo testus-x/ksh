@@ -57,9 +57,9 @@ Only gatekeepers are able to merge PRs to protected upstream branches (e.g. `mas
 **NOTE**: Please do **not** use github's WebUI to merge PRs!
 
 GitHub's green merge button on the WebUI should not be used to merge PRs because:
-	* The "Create a merge commit" method will add an unnecessary merge commit.
-	* The "Squash and merge" method will add metadata (the pull request #) to the commit title. If more than one author contributes to the pull request, squashing only keeps one author.
-	* The "Rebase and merge" method has no way of adding metadata to the commit.
+  * The "Create a merge commit" method will add an unnecessary merge commit.
+  * The "Squash and merge" method will add metadata (the pull request #) to the commit title. If more than one author contributes to the pull request, squashing only keeps one author.
+  * The "Rebase and merge" method has no way of adding metadata to the commit.
 Therefore we use our own local repository to merge and push back.
 
 Because a gatekeeper is usually a developer as well and usually has its own local clone already in place he can use this repository. To be able to pull branches from other repos (remotes including `upstream`), one should add them on demand (but at least upstream), e.g. using:
