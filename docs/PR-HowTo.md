@@ -13,10 +13,10 @@ git config user.name 'Given to.use.4this.repo Surname'
 ```
 Note that git automatically assigns the name **origin** to the cloned repository (`https://github.com/*my_account*/ksh/`) and can be used to refer to it within git commands.
 
-## Issue
+## Create an Issue
 Before you start working on an problem or feature, please check the [ksh Issue](https://github.com/ksh-community/ksh/issues) web page, whether there is not already work in progress (WIP) to avoid wasting your valueable time. If there is someone already working on it, please check, whether it is possible to work together. If you can't find an Issue for your problem/feature, please [create a new Issue](https://github.com/ksh-community/ksh/issues/new) and refer to it using a number sign + number (e.g. #123) when you refer to it on github. Within the issue web page you may ask for further guidance or get some hints from other collaborators.
 
-## Branch, commit and create a PR
+## Branch, commit, rebase to master
 Before you actually start changing any code, you should always make sure, that your master is up-to-date - see below [**Sync with upstream**](#user-content-1-sync-with-upstream) for the related CLI commands. 
 
 When your master is up-to-date, create a new branch, e.g. named `fix_problem`:
@@ -24,13 +24,14 @@ When your master is up-to-date, create a new branch, e.g. named `fix_problem`:
 git checkout master
 git checkout -b fix_problem
 ```
-Always make sure, that you are on the right and _not_ on the master branch, before you start working, e.g. using `git branch`. Each time you think you made progress which should not be lost, commit it to your local branch. Finally, when youthink you are done (what might be some days/weeks later), make sure your local master is still in [sync with the upstream master](#user-content-1-sync-with-upstream) and rebase your branch to the master's HEAD, e.g. using:
+Always make sure, that you are on the right and _not_ on the master branch, before you start working, e.g. using `git branch`. Each time you think you made progress which should not be lost, commit it to your local branch. Finally, when you think you are done (what might be some days/weeks later), make sure your local master is still in [sync with the upstream master](#user-content-1-sync-with-upstream) and rebase your branch to the master's HEAD, e.g. using:
 ```
 git checkout fix_problem
 git rebase master
 ```
-Depending on what you do and what's going on in the master, it is probably a good idea to sync and rebase often, so that you can be sure, that you do not double any work, that your changes match the current code base and still works.
+Depending on what you do and what's going on in the upstream master, it is probably a good idea to sync and rebase often, so that you can be sure, that you do not double any work, that your changes match the current code base and the SW still works as expected.
 
+## Create a PR
 Once you are at the point you think you are in sync with the upstream master and the work is finished or someone should have a look at it, push the branch to your **origin**, e.g. using:
 ```
 git checkout fix_problem
