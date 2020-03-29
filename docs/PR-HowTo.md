@@ -134,6 +134,7 @@ In the new local branch, which contains the PR, one should now modify all commit
   * Code units, commits, patches: One should be able to read and understand them pretty easy, quickly. So:
     * keep them as compact as possible
     * inline documentation where it makes sense
+    * squash as needed - especially if several changes are made to a PR it might be very cluttered and hard to catch the real changes to the code base. Squashing may help to selectively clean up the mess.
   * use the **issue page** on github to discuss and track ideas, enhancements, tasks, bugs, brainstorming (the **what**). Document the results as compact as possible in the code or commit message.
   * use the **PR page** on github to discuss/annotate code related details (the **how**)
 
