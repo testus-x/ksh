@@ -89,7 +89,7 @@ If the checkout above does not work because of pending changes, just stash them 
 ###	2. Pull the PR into a new local branch
 First, one should create a local branch, where the PR changes get merged in. Actually one may merge the changes directly into the master, however, usually one wanna **review** and **test** the changes, what sometimes takes a little bit longer or need to be postponed for this or that reason and thus would block any progress on the master or on your own branches. So with a new branch one may cherry pick, reword, edit, squash, join and drop commits, make other fine grained adjustments before the PR gets merged into the related upstream branch and if anything goes really wrong, one always has the option to simply drop the branch/changes made so far and start over again.
 
-To find out, what to merge into the new branch, one can go to the [ksh repository](https://github.com/ksh-community/ksh) page, click on the [Pull requests](https://github.com/ksh-community/ksh/pulls) tab, and select the desired PR - you will end up with an URL like `https://github.com/ksh-community/ksh/pull/123` - NOTE: the number at the end of the URL is the github assigned [ID](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/checking-out-pull-requests-locally#modifying-an-inactive-pull-request-locally) of the PR. On the PR page click on the [command line instructions]() link right beside the green `Squash and merge` button. The pattern you will see is basically `git pull git://github.com/*collaborator*/ksh.git *branch*`. So for our example:
+To find out, what to merge into the new branch, one can go to the [ksh repository](https://github.com/ksh-community/ksh) page, click on the [Pull requests](https://github.com/ksh-community/ksh/pulls) tab, and select the desired PR - you will end up with an URL like `https://github.com/ksh-community/ksh/pull/123` - NOTE: the number at the end of the URL is the github assigned **ID** of the PR. On the PR page click on the [command line instructions](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/checking-out-pull-requests-locally) link right beside the green `Squash and merge` button. The pattern you will see is basically `git pull git://github.com/*collaborator*/ksh.git *branch*`. So for our example:
 ```
 # Option #1
 git checkout master
@@ -109,7 +109,7 @@ rm /tmp/prXY
 ```
 Wrt. wget you may simply copy and paste the URL of the PR page and append `.patch` to it (`${URL}`**.patch**). The advantage here is, that one may change the Author and e-mail address by just editing the `From:` values in the mbox file (mbox == plain text). Furthermore one may use an e-mail client to browse all commits and determine the number of commits in the PR very easy (e.g. `mutt -f /tmp/prXY` or `grep ^Subject /tmp/prXY`). Because the commits get re-created, they will have a different hash, than in the original branch and PR.
 
-Last but not least there is a 3rd option: pulling the PR directly into a new branch. E.g.:
+Last but not least there is a 3rd option: [pull the PR directly into a new branch](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/checking-out-pull-requests-locally#modifying-an-inactive-pull-request-locally). E.g.:
 ```
 # Option #3
 git checkout master
@@ -124,7 +124,7 @@ In the new local branch, which contains the PR, one should now modify all commit
   * Commit messages: title
     * max. 72 chars. If too long, try to shorten it, add a <LF> and use the longer description as "body" of the commit.
     * should contain a reference to the issue ID, e.g. see #321
-    * to auto-close prefix with 'fix #123' or append '(fixes #321)'
+    * to auto-close the related issue prefix with 'fix #123' or append '(fixes #321)' or use any other [auto-close phrase]()
   * Commit message: body
     * the commit message body gets separated from the commit message title by a single blank line.
     * if the message title contains no reference to the issue ID, add the following tag to the body of all commits: `  See: #321` - replace 321 with the issue ID. You may add more using a single whitespace as separator.
