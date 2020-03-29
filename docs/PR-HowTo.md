@@ -92,23 +92,25 @@ First, one should create a local branch, where the PR changes get merged in. Act
 git checkout master
 git checkout -b fixXY
 ```
-If we know, that the PR got created by comparing the master with e.g. `jghub`'s `fix1` branch in theory one could use `git pull jghub fix1` to merge it in. However, to make sure, that we really use the "content" of the PR submitted to github, we download the PR as an mbox formatted file. It contains every commit in a separate e-mail with the commit formatted as a git patch. Once we have it, we apply it to the local branch:
+To find out, what to merge into the new branch, one can go on the issue page (e.g. `https://github.com/ksh-community/ksh/pull/123`) - use the [Issues tab](https://github.com/ksh-community/ksh/pulls) to find it - and click on the [command line instructions]() link right beside the green `Squash and merge` button.
+
+ we know, that the PR got created by comparing the master with e.g. `jghub`'s `fix1` branch in theory one could use `git pull jghub fix1` to merge it in. However, it is  little bit annoying to have to find out from where to pull in the changes (, we download the PR as an mbox formatted file. It contains every commit in a separate e-mail with the commit formatted as a git patch. Once we have it, we apply it to the local branch:
 ```
-wget -O /tmp/prXY --local-encoding=en_US.UTF8 https://github.com/ksh-community/ksh/pull/5.patch
+wget -O /tmp/prXY https://github.com/ksh-community/ksh/pull/123.patch
 git checkout fixXY
 git am /tmp/prXY
 rm /tmp/prXY
 ```
-Note: `5` in the example above is the github assigned [ID](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/checking-out-pull-requests-locally#modifying-an-inactive-pull-request-locally) of the PR. To find the right ID just open the related PR page via the [Pull requests](https://github.com/ksh-community/ksh/pulls) tab on github (or use its `${URL}`**.patch** directly). If the PR consists of more than a single commit, the patch file contains several e-mails - one for each commit.
+Note: `123` in the example above is the github assigned [ID](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/checking-out-pull-requests-locally#modifying-an-inactive-pull-request-locally) of the PR. To find the right ID just open the related PR page via the [Pull requests](https://github.com/ksh-community/ksh/pulls) tab on github (or use its `${URL}`**.patch** directly). If the PR consists of more than a single commit, the patch file contains several e-mails - one for each commit.
 
 Now you can modify all commits as needed. The following **rules of thumb** should be obeyed:
   * Commit messages: title
     * max. 72 chars. If too long, try to shorten it, add a <LF> and use the longer description as "body" of the commit.
-    * should contain a reference to the issue ID, e.g. see #123
-    * to auto-close prefix with 'fix #123' or append '(fixes #123)'
+    * should contain a reference to the issue ID, e.g. see #321
+    * to auto-close prefix with 'fix #123' or append '(fixes #321)'
   * Commit message: body
     * the commit message body gets separated from the commit message title by a single blank line.
-    * if the message title contains no reference to the issue ID, add the following tag to the body of all commits: `  See: #123` - replace 123 with the issue ID. You may add more using a single whitespace as separator.
+    * if the message title contains no reference to the issue ID, add the following tag to the body of all commits: `  See: #321` - replace 321 with the issue ID. You may add more using a single whitespace as separator.
     * max. line length: 80 chars
     * if more than one author should be named, add the following line for each of them to the end of the message body: `Co-authored-by: Given Name <email>` - the email should be the one, which the author used to registred with github. 
     * important know how refs should be part of the commit message unless they are already inlined in the code. If github issue pages are not available, one should still be able to get the know how to understand the patch pretty easy.
