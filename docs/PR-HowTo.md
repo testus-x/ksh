@@ -89,11 +89,12 @@ If the checkout above does not work because of pending changes, just stash them 
 ###	2. Create a new local branch, merge in the PR, adjust commits 
 First, one should create a local branch, where the PR changes get merged in. Actually one may merge the changes directly into the master, however, usually one wanna **review** and **test** the changes, what sometimes takes a little bit longer or need to be postponed for this or that reason and thus would block any progress on the master or on your own branches. Furthermore a separate branch gives much more flexibility, allows one to cherry pick, reword, edit, squash, join and drop commits, i.e. fine grained adjustments before the PR gets merged into the related upstream branch.
 ```
+git checkout master
 git checkout -b fixXY
 ```
-If we know, that the PR got created by comparing the master with e.g. `jghub`'s `fix1` branch in theory one could use `git pull jghub fix1` to merge it in. However, to make sure, that we really use the "content" of the PR submitted to github, we download the PR as an e-mail formatted patch and apply it to the local branch:
+If we know, that the PR got created by comparing the master with e.g. `jghub`'s `fix1` branch in theory one could use `git pull jghub fix1` to merge it in. However, to make sure, that we really use the "content" of the PR submitted to github, we download the PR as an mbox formatted file. It contains every commit in a separate e-mail with the commit formatted as a git patch. Once we have it, we apply it to the local branch:
 ```
-wget -O /tmp/prXY https://github.com/ksh-community/ksh/pull/5.patch
+wget -O /tmp/prXY --local-encoding=en_US.UTF8 https://github.com/ksh-community/ksh/pull/5.patch
 git checkout fixXY
 git am /tmp/prXY
 rm /tmp/prXY
@@ -102,7 +103,13 @@ Note: `5` in the example above is the github assigned [ID](https://help.github.c
 
 Before applying the patch, you may adjusting it, by editing the file of course (e.g. Author/e-mail in the `From:` headers).
 
-Now you can modify all commits as needed. 
+Now you can modify all commits as needed. The following rule of thumb should be obeyed:
+  * Commit messages: title
+    * max. 72 chars (if too long, try to shorten it, add a <LF> and use the longer description as "body" of the commit)
+    * should contain a reference to the issue ID, e.g. see #123
+    * to auto-close prefix with 'fix #123' or append '(fixes #123)'
+  * Commit body
+    * if the title contains no reference to the issue ID, add the following tag to the body: `  See: #123` - replace 123 with the issue ID. You may add more using a single whitespace as separator.
 
 TBD: reword + include issue NR, rebase
 ```
