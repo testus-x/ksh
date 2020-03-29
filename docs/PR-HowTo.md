@@ -1,9 +1,9 @@
 # Pull Request (PR) / Workflow HowTo
 
 ## Clone the clone
-Before you start working on a fix or feature, you should clone the [**ksh**](https://github.com/ksh-community/ksh) repository - here we refer to it using the term **upstream**. You can do that by cloning the repository directly. However, to be able to submit PRs you need to have your own **ksh** clone on github.com. Clicking the [**Fork**](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) button on the upper right accomplishes this. It redirects you to your ksh clone: here we refer to it using the term **origin**.
+Before you start working on a fix or feature, you should clone the [**ksh repository**](https://github.com/ksh-community/ksh) - here we refer to it using the term **upstream**. You can do that by cloning the repository suing git directly. However, to be able to create and submit PRs you need to have your own **ksh** clone on github.com. Clicking the [**Fork**](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) button on the upper right of the [**ksh repository**](https://github.com/ksh-community/ksh) accomplishes this. As soon as finished it redirects you to your ksh clone: here we refer to it using the term **origin**.
 
-However, you probably do not wanna edit files remotely (via Github WebUI) and you want/should test your changes on your preferred machine and OS. So you should clone your `origin` to this machine/OS - here we refer to it using the term **local**. Via CLI it is as easy as:
+However, you probably do not wanna edit files remotely (via Github WebUI) and you want/should test your changes on your preferred machine and OS. So you should clone your `origin` to this machine/OS - here we refer to this new clone using the term **local**. Via CLI it is as easy as:
 ```
 git clone git@github.com:*my_account*/ksh.git
 # optional
@@ -11,10 +11,10 @@ cd ksh
 git config user.email 'email+address@to.use.4this.repo'
 git config user.name 'Given to.use.4this.repo Surname'
 ```
-Note that git automatically assigns the name **origin** to your repository on https://github.com/*my_account*/ksh/ and can be used to refer to it.
+Note that git automatically assigns the name **origin** to the cloned repository (https://github.com/*my_account*/ksh/) and can be used to refer to it within git commands.
 
 ## Issue, branch, commit and create a PR
-Before you start working on an problem or feature, please check the [ksh Issue](https://github.com/ksh-community/ksh/issues) web page, whether there is not already work in progress (WIP) to avoid wasting your valueable time. If there is someone already working on it, please check, whether it is possible to work together on it. If you can't find an Issue for your problem/feature, please [create a new Issue](https://github.com/ksh-community/ksh/issues/new) and refer to it using hash + number (e.g. #123) when you refer to it on github. Within the issue web page you may ask for further guidance or get some hints from other collaborators.
+Before you start working on an problem or feature, please check the [ksh Issue](https://github.com/ksh-community/ksh/issues) web page, whether there is not already work in progress (WIP) to avoid wasting your valueable time. If there is someone already working on it, please check, whether it is possible to work together on it. If you can't find an Issue for your problem/feature, please [create a new Issue](https://github.com/ksh-community/ksh/issues/new) and refer to it using a number sign + number (e.g. #123) when you refer to it on github. Within the issue web page you may ask for further guidance or get some hints from other collaborators.
 
 Before you actually start changing any code, you should always make sure, that your master is up-to-date - see below [**Sync with upstream**](#user-content-1-sync-with-upstream) for the related CLI commands. 
 
