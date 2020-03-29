@@ -39,14 +39,14 @@ git push --set-upstream origin fix_problem
 ```
 The `--set-upstream` is optional - it tells git, where a push per default gets sent to and from where to pull data per default.
 
-Now you can use the [**New pull request**](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork) button to create new Pull request. This will notify PR reviewers, which will have a look at it, may ask for changes or explainations and finally the PR gets merged to the related upstream branch. After this you may do some local housekeeping and delete the merged branch, e.g. using
+Now you can use the [**New pull request**](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork) button in the WebUI of your **origin** to create new Pull request. This will notify PR reviewers, which will have a look at it, may ask for changes or explainations and finally the PR gets merged to the related upstream branch. After this you may do some local housekeeping and delete the merged branch, e.g. using
 ```
 git checkout master
 git branch -d fix_problem
 ```
 
 
-## Code [review](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-reviews)
+## Code [review](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-request-reviews) (collaborators)
 Before a PR is allowed to be merged into a protected branch, at least two collaborators must approve it (WebUI button becomes green). Furthermore, if Continuous Integration (CI) has been set up, all tests need to pass (green or yellow) unless there are very good/strong reasons, which should allow merging w/o CI passing.
 
 All fixes should have a test case which demonstrates the defect. The test should fail before the change, and pass after the change. If it is too hard or too complex to create a test, at least the corresponding issue should have a clear description, how to re-produce the problem. The code should be documented inline as well unless it doesn't make sense or is more or less bloat.
