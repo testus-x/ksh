@@ -66,10 +66,10 @@ Therefore we **use our own local repository** to merge and push.
 To be able to pull branches from other repos, one should add them on demand, but at least `upstream`, e.g. using:
 ```
 git remote add upstream git@github.com:ksh-community/ksh.git
-git remote add *collaborator* git@github.com:*collaborator*/ksh.git
+git remote add jghub git@github.com:*collaborator*/ksh.git
 git remote -v
 ```
-Note that **upstream** is now assigned to the official ksh repository on https://github.com/ksh-community/ksh/.
+Note that **upstream** is now assigned to the official ksh repository on `https://github.com/ksh-community/ksh` and **jghub** to `git@github.com:*collaborator*/ksh.git`.
 
 ###	1. Sync with upstream
 Clear any `am`/`rebase` that may already be underway and sync with the upstream. This should be actually done by every ksh developer before he creates a new branch and before he rebases his branch in turn to create a PR from it:
@@ -84,7 +84,7 @@ git push master
 If the checkout above does not work because of pending changes, just stash them away using `git stash` and when done with merging, get them back using `git stash pop`.
 
 ###	2. Create a new local branch and merge in the PR
-First, one should create a local branch, where the PR change get merged in. Actually one may merge the changes directly into the master, however, usually one wanna **review** and **test** the changes, what sometimes takes a little bit longer or need to be postponed for this or that reason and thus would block any progress on the master or on your own branches. Furthermore a separate branch allows one to So creating a new local branch makes provides much more flexibility:
+First, one should create a local branch, where the PR change get merged in. Actually one may merge the changes directly into the master, however, usually one wanna **review** and **test** the changes, what sometimes takes a little bit longer or need to be postponed for this or that reason and thus would block any progress on the master or on your own branches. Furthermore a separate branch gives much more flexibility, allows one to cherry pick, reword, edit, squash, join and drop commits, i.e. fine grained adjusments before the PR gets merged into the related upstream branch. So creating a new local branch makes and pulling in all commits from :
 ```
 git checkout -b fixXY
 git pull jghub fix1
@@ -92,6 +92,14 @@ git pull jghub fix1
 Now you can modify all commits as needed (and remove all changes being made so for using `git clean -f -d`). 
 
 TBD: reword + include issue NR, rebase
+# p, pick = use commit
+# r, reword = use commit, but edit the commit message
+# e, edit = use commit, but stop for amending
+# s, squash = use commit, but meld into previous commit
+# f, fixup = like "squash", but discard this commit's log message
+# x, exec = run command (the rest of the line) using shell
+# d, drop = remove commit
+
 
 ###	3. Merge into the master and push to upstream and origin
 ```
