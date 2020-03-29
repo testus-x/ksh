@@ -89,7 +89,7 @@ If the checkout above does not work because of pending changes, just stash them 
 ###	2. Create a new local branch, merge in the PR, adjust commits 
 First, one should create a local branch, where the PR changes get merged in. Actually one may merge the changes directly into the master, however, usually one wanna **review** and **test** the changes, what sometimes takes a little bit longer or need to be postponed for this or that reason and thus would block any progress on the master or on your own branches. So with a new branch one may cherry pick, reword, edit, squash, join and drop commits, make other fine grained adjustments before the PR gets merged into the related upstream branch and if anything goes really wrong, one always has the option to simply drop the branch/changes made so far and start over again.
 
-To find out, what to merge into the new branch, one can go to the [ksh repository](https://github.com/ksh-community/ksh) page, click on the [Pull requests](https://github.com/ksh-community/ksh/pulls) tab, and select the desired PR - you will end up with an URL like `https://github.com/ksh-community/ksh/pull/123` - NOTE: the number ath the end of the URL is the github assigned [ID](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/checking-out-pull-requests-locally#modifying-an-inactive-pull-request-locally) of the PR. On the PR page click on the [command line instructions]() link right beside the green `Squash and merge` button. The pattern to use is basically `git pull git://github.com/*collaborator*/ksh.git *branch*`:
+To find out, what to merge into the new branch, one can go to the [ksh repository](https://github.com/ksh-community/ksh) page, click on the [Pull requests](https://github.com/ksh-community/ksh/pulls) tab, and select the desired PR - you will end up with an URL like `https://github.com/ksh-community/ksh/pull/123` - NOTE: the number at the end of the URL is the github assigned [ID](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/checking-out-pull-requests-locally#modifying-an-inactive-pull-request-locally) of the PR. On the PR page click on the [command line instructions]() link right beside the green `Squash and merge` button. The pattern you will see is basically `git pull git://github.com/*collaborator*/ksh.git *branch*`. So for our example:
 ```
 # Option #1
 git checkout master
@@ -98,7 +98,7 @@ git pull jghub fix1
 ```
 Here we can use `jghub` because we have added a remote repository and assigned this name to it.
 
-Another, IMHO easier to automat option to pull in the changes is to download the PR as an mbox formatted file. It contains every commit in a separate e-mail with the commit formatted as a git patch. Once we have it, we apply it to the local branch:
+Another option to pull in the PR is to download the PR as an mbox formatted file. It contains every commit in a separate e-mail with the commit formatted as a git patch. Once we have it, we apply it to the local branch. E.g.:
 ```
 # Option #2
 wget -O /tmp/prXY https://github.com/ksh-community/ksh/pull/123.patch
@@ -107,7 +107,15 @@ git checkout -b fixXY
 git am /tmp/prXY
 rm /tmp/prXY
 ```
-Wrt. wget you may just copy and paste the URL of the PR page and append `.patch` to it (`${URL}`**.patch**). The advantage here is, that you may change the Author and e-mail address by just editing the `From:` values in the mbox file. Furthermore you may use an e-mail client to browse all commits and determine the number of commits in the PR very easy (e.g. `mutt -f /tmp/prXY`).
+Wrt. wget you may just copy and paste the URL of the PR page and append `.patch` to it (`${URL}`**.patch**). The advantage here is, that you may change the Author and e-mail address by just editing the `From:` values in the mbox file. Furthermore you may use an e-mail client to browse all commits and determine the number of commits in the PR very easy (e.g. `mutt -f /tmp/prXY` or `grep ^Subject /tmp/prXY`).
+
+Last but not least there is a 3rd option: pulling the PR directly into a new branch. E.g.:
+```
+# Option #3
+git checkout master
+git fetch upstream pull/123/head:fixXY
+git checkout fixXY
+```
 
 Now you can modify all commits as needed. The following **rules of thumb** should be obeyed:
   * Commit messages: title
