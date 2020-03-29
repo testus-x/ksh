@@ -60,6 +60,7 @@ GitHub's green merge button on the WebUI should not be used to merge PRs because
   * The "Create a merge commit" method will add an unnecessary merge commit.
   * The "Squash and merge" method will add metadata (the pull request #) to the commit title, which might be undesired (because of auto-closing the related issue). If more than one author contributes to the pull request, squashing only keeps one author (we append them at the end of the commit message using the `Co-authored-by: Given Name <email>`).
   * The "Rebase and merge" method has no way of adding metadata to the commit (like `Co-authored-by: ...`).
+
 Therefore we use our own local repository to merge and push back.
 
 Because a gatekeeper is usually a developer as well and usually has its own local clone already in place he can use this repository. To be able to pull branches from other repos (remotes including `upstream`), one should add them on demand (but at least upstream), e.g. using:
