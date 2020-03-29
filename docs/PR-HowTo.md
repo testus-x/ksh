@@ -107,10 +107,11 @@ Now you can modify all commits as needed. The following **rules of thumb** shoul
     * should contain a reference to the issue ID, e.g. see #123
     * to auto-close prefix with 'fix #123' or append '(fixes #123)'
   * Commit message: body
-    * the commit message body gets separated from the commit message title by a single empty line.
+    * the commit message body gets separated from the commit message title by a single blank line.
     * if the message title contains no reference to the issue ID, add the following tag to the body of all commits: `  See: #123` - replace 123 with the issue ID. You may add more using a single whitespace as separator.
     * max. line length: 80 chars
-    * if more than one authors should be should named, add the following line for each of them to the end of the message body: `Co-authored-by: Given Name <email>` - the email should be the one, which cwthe author used to registred with github. 
+    * if more than one author should be named, add the following line for each of them to the end of the message body: `Co-authored-by: Given Name <email>` - the email should be the one, which the author used to registred with github. 
+    * important know how refs should be part of the commit message unless they are already inlined in the code. If github issue pages are not available, one should still be able to get the know how to understand the patch.
 
 TBD: reword + include issue NR, rebase
 ```
