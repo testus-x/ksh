@@ -148,7 +148,7 @@ git rebase -i master
 git rebase -i HEAD~${number_of_commits_in_the_PR}
 ```
 
-The option **-i** is important! This will open your `${EDITOR}` with a text containing all commits being in the local branch but not in the master, or for the second variant the last ${number_of_commits_in_the_PR} wrt. to the HEAD of the local branch, followed by a little legend, what one may do. E.g.: 
+The option **-i** is important! This will open your `${EDITOR}` with a text containing all commits being in the local branch but not in the master, or for the second variant the last ${number_of_commits_in_the_PR} wrt. to the HEAD of the local branch, followed by a little legend, what one may do. So basically the output of `git log --oneline HEAD...master` prefixed with `pick '. E.g.: 
 
 ```
 pick 35d8f3182 last commit from the master
