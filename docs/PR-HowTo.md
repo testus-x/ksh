@@ -148,9 +148,22 @@ git rebase -i master
 git rebase -i HEAD~${number_of_commits_in_the_PR}
 ```
 
-The option **-i** is important!
+The option **-i** is important! This will open your `${EDITOR}` with a text containing all commits being in the local branch but not in the master, or for the second variant the last ${number_of_commits_in_the_PR} wrt. to the HEAD of the local branch, followed by a little legend, what one may do. E.g.: 
 
 ```
+pick 35d8f3182 last commit from the master
+pick b7213446f doc idea for a new func which handles ...
+pick d2d553bdf implements new func1
+pick 9d1c21840 use libmath to ...
+pick c0c1631d4 fix linebreaks in func1
+pick 1acc8e504 revert libmath change - n/a on all platforms
+pick 1d7a502bd remove bloat
+pick 14efcf0fb document new func1
+pick b471a3de1 cleanup docs
+
+# Rebase 2767bfb18..1acc8e504 onto 2767bfb18 (8 commands)
+#
+# Commands:
 # p, pick = use commit
 # r, reword = use commit, but edit the commit message
 # e, edit = use commit, but stop for amending
@@ -158,7 +171,29 @@ The option **-i** is important!
 # f, fixup = like "squash", but discard this commit's log message
 # x, exec = run command (the rest of the line) using shell
 # d, drop = remove commit
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
 ```
+
+Now you can tell git, what you wanna do by changing `pick` to the desired action. E.g. to change/adjust a commit message, replace `pick` with `r` or `reword`. Or because only the final implementation fo func1 is interesting, one should squash `d2d553bdf`, `9d1c21840`, `c0c1631d4`, `1acc8e504` into a single commit, but this commit should be reworded e.g. to `implements new func1 (fixes #321)`. Similar to documentation: if the new function is properly documented, the changes containing the original idea can probably dropped (remove redundancy, `b7213446f`) and `14efcf0fb`, `1d7a502bd`, `b471a3de1` should be squashed together as well. Note that one may also change the order of the commits (but the more changes get made, the higher the probability that merge conflicts occure and you manually need to fix them).  So e.g. one would change the text shown above to:
+```
+pick 35d8f3182 last commit from the master
+d b7213446f doc idea for a new func which handles ...
+pick 14efcf0fb document new func1
+f 1d7a502bd remove bloat
+f b471a3de1 cleanup docs
+r d2d553bdf implement new func1
+f 9d1c21840 use libmath to ...
+f c0c1631d4 fix linebreaks in func1
+f 1acc8e504 revert libmath change - n/a on all platforms
+```
+
 
 ###	4. Merge into the master and push to upstream + origin
 ```
