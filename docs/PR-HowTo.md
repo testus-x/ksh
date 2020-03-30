@@ -139,7 +139,15 @@ In the new local branch, which contains the PR, one should now modify all commit
     * squash as needed - especially if several changes are made to a PR it might be very cluttered and hard to catch the real changes to the code base. Squashing may help to selectively clean up the mess.
     * trim trailing whitespaces. If you have a color enabled terminal, use `git diff master` and watch out for red boxes.
 
-TBD: reword + include issue NR, rebase
+To fix any of the of the problems mentioned above, one should use the **rebase** feature of git:
+```
+git rebase -i master
+# or 
+git rebase -i HEAD~${number_of_commits_in_the_PR}
+```
+
+The option **-i** is important!
+
 ```
 # p, pick = use commit
 # r, reword = use commit, but edit the commit message
