@@ -202,9 +202,28 @@ Much cleaner without any bloat.
 
 
 ###	4. Merge into the master and push to upstream + origin
+Before the merge actually gets initiated, please check, that commit messages are ok, code follows our guidelines and any unnecessary stuff got removed. E.g. use an 80 characters wide terminal and run:
+```
+git checkout fixXY
+# watch out for line wrappings
+git log --oneline HEAD...master
+git log HEAD...master
+# watch out for red blocks (trailing whitespaces) and possible bugs
+git log -pHEAD...master
+```
+
+Finally, if you are sure, that everything is ok and you are ready to take responsibility for the changes, merge and push them like this: 
 ```
 git checkout master
 git merge --ff fixXY
 git push upstream master
 git push origin master
 ```
+
+### 5. Cleanup
+Since the changes of the PR are now in the master, you can do some housekeeping and remove the temporary local branch like this:
+```
+git checkout master
+git branch -d fixXY
+```
+However, if you like, you can do it any time later or never - it is your repository, so your choice.
