@@ -121,9 +121,9 @@ That's probably the most convinient option and keeps commit hashes as is.
 ###	3. Adjust commits 
 
 In the new local branch, which contains the PR, one should now modify all commits as needed. The following **rules of thumb** should be taken into account:
-  * If the PR is not yet linked to an issue, create an issue (if not already done) and [link the PR to the issue](https://help.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue).
-  * Use the **issue page** on github to discuss and track PR related ideas, enhancements, tasks, bugs, brainstorming (the **what**). Document the results as compact as possible in the code or commit message.
-  * Use the **PR page** on github to discuss/annotate code related details (the **how**).
+  * If the PR is not yet linked to an issue, [create an issue](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue) (if not already done) and [link the PR to the issue](https://help.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue).
+  * Use the [**Issue page**](https://help.github.com/en/github/managing-your-work-on-github/using-search-to-filter-issues-and-pull-requests) on github to discuss and track PR related ideas, enhancements, tasks, bugs, brainstorming (the **what**). Document the results as compact as possible in the code or commit message.
+  * Use the [**PR page**](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request) on github to comment/annotate code related details (the **how**).
   * Commit messages: title
     * max. 72 chars. If too long, try to shorten it, add a <LF> and use the longer description as "body" of the commit.
     * should contain a reference to the issue ID, e.g. see #321
