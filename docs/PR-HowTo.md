@@ -193,11 +193,12 @@ f 9d1c21840 use libmath to ...
 f c0c1631d4 fix linebreaks in func1
 f 1acc8e504 revert libmath change - n/a on all platforms
 ```
-Finally you save the text and exit your `${EDITOR}`. Git starts now rebasing. For `14efcf0fb` it takes over the commit message as is, but for `d2d553bdf` it will invoke your `${EDITOR}` for rewording. Just change the presented commit message as mentioned above, save it and exit your `${EDITOR}`. If any conflicts occure, follow the instructions git shows you, or ask for hints on the PR related github page. Finally `git log --oneline HEAD...master` should show you something like this:
+Finally you save the text and exit your `${EDITOR}`. Git starts now rebasing. For `14efcf0fb` it takes over the commit message as is, but for `d2d553bdf` it will invoke your `${EDITOR}` for rewording. Just change the presented commit message as mentioned above, save it and exit your `${EDITOR}`. If any conflicts occure, follow the instructions git shows you, or ask for hints on the PR related github page. Finally `git log --oneline HEAD...master` shows something like this:
 ```
 b0e862ef3 document new func1
 ffd638d25 implements new func1 (fixes #321)
 ```
+Much cleaner without any bloat.
 
 
 ###	4. Merge into the master and push to upstream + origin
