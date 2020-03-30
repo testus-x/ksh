@@ -104,7 +104,7 @@ Another option to pull in the PR is to download the PR as an mbox formatted file
 wget -O /tmp/prXY https://github.com/ksh-community/ksh/pull/123.patch
 git checkout master
 git checkout -b fixXY
-git am /tmp/prXY
+git am --whitespace=fix /tmp/prXY
 rm /tmp/prXY
 ```
 Wrt. wget you may simply copy and paste the URL of the PR page and append `.patch` to it (`${URL}`**.patch**). The advantage here is, that one may change the Author and e-mail address by just editing the `From:` values in the mbox file (mbox == plain text). Furthermore one may use an e-mail client to browse all commits and determine the number of commits in the PR very easy (e.g. `mutt -f /tmp/prXY` or `grep ^Subject /tmp/prXY`). Because the commits get re-created, they will have a different hash, than in the original branch and PR.
@@ -121,6 +121,8 @@ That's probably the most convinient option and keeps commit hashes as is.
 ###	3. Adjust commits 
 
 In the new local branch, which contains the PR, one should now modify all commits as needed. The following **rules of thumb** should be taken into account:
+  * use the **issue page** on github to discuss and track PR related ideas, enhancements, tasks, bugs, brainstorming (the **what**). Document the results as compact as possible in the code or commit message.
+  * use the **PR page** on github to discuss/annotate code related details (the **how**)
   * Commit messages: title
     * max. 72 chars. If too long, try to shorten it, add a <LF> and use the longer description as "body" of the commit.
     * should contain a reference to the issue ID, e.g. see #321
@@ -135,8 +137,7 @@ In the new local branch, which contains the PR, one should now modify all commit
     * keep them as compact as possible
     * inline documentation where it makes sense
     * squash as needed - especially if several changes are made to a PR it might be very cluttered and hard to catch the real changes to the code base. Squashing may help to selectively clean up the mess.
-  * use the **issue page** on github to discuss and track ideas, enhancements, tasks, bugs, brainstorming (the **what**). Document the results as compact as possible in the code or commit message.
-  * use the **PR page** on github to discuss/annotate code related details (the **how**)
+    * trim trailing whitespaces. If you have a color enabled terminal, use `git diff master` and watch out for red boxes.
 
 TBD: reword + include issue NR, rebase
 ```
