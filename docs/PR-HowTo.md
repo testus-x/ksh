@@ -121,12 +121,13 @@ That's probably the most convinient option and keeps commit hashes as is.
 ###	3. Adjust commits 
 
 In the new local branch, which contains the PR, one should now modify all commits as needed. The following **rules of thumb** should be taken into account:
-  * use the **issue page** on github to discuss and track PR related ideas, enhancements, tasks, bugs, brainstorming (the **what**). Document the results as compact as possible in the code or commit message.
-  * use the **PR page** on github to discuss/annotate code related details (the **how**)
+  * If the PR is not yet linked to an issue, create an issue (if not already done) and [link the PR to the issue](https://help.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue).
+  * Use the **issue page** on github to discuss and track PR related ideas, enhancements, tasks, bugs, brainstorming (the **what**). Document the results as compact as possible in the code or commit message.
+  * Use the **PR page** on github to discuss/annotate code related details (the **how**).
   * Commit messages: title
     * max. 72 chars. If too long, try to shorten it, add a <LF> and use the longer description as "body" of the commit.
     * should contain a reference to the issue ID, e.g. see #321
-    * to auto-close the related issue prefix with 'fix #123' or append '(fixes #321)' or use any other [auto-close phrase]()
+    * to auto-close the related issue prefix with 'fix #123' or append '(fixes #321)' or use any other [auto-close phrase](https://help.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword)
   * Commit message: body
     * the commit message body gets separated from the commit message title by a single blank line.
     * if the message title contains no reference to the issue ID, add the following tag to the body of all commits: `  See: #321` - replace 321 with the issue ID. You may add more using a single whitespace as separator.
@@ -141,6 +142,7 @@ In the new local branch, which contains the PR, one should now modify all commit
 
 To fix any of the of the problems mentioned above, one should use the **rebase** feature of git:
 ```
+git checkout fixXY
 git rebase -i master
 # or 
 git rebase -i HEAD~${number_of_commits_in_the_PR}
